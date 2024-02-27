@@ -3,6 +3,7 @@ package main;
 import java.util.Scanner;
 
 import controller.StockController;
+import model.Product;
 import util.Colors;
 import util.Strings;
 
@@ -75,8 +76,27 @@ public class Main {
 				stock.procurarPorNome(input.nextLine());
 				break;
 			case "3": // cadastrar novo produto
-				
 				System.out.println(Strings.PRODUCT_NEW);
+				System.out.println(Strings.PRODUCT_PARAMS);
+				String[] newData = input.nextLine().split(", ");
+				String name;
+				int id;
+				float value;
+				String category;
+				String description;
+					
+				try {
+					name = newData[0];
+					id = Integer.parseInt(newData[1]);
+					value = Float.parseFloat(newData[2].replace(',', '.'));
+					category = newData[3];
+					description = newData[4];
+					
+					stock.cadastrarProduto(new Product(name, id, value, category, description));
+				} catch (Exception e) {
+					System.out.println(Strings.INVALID_OPTION);
+					System.out.println(Strings.PRODUCT_PARAMS);
+				}
 				break;
 			case "4": // remover produto
 				System.out.println(Strings.PRODUCT_REMOVE);
