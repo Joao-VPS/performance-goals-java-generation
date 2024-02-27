@@ -2,11 +2,13 @@ package main;
 
 import java.util.Scanner;
 
+import controller.StockController;
 import util.Colors;
 import util.Strings;
 
 public class Main {
 	static Scanner input = new Scanner(System.in);
+	static StockController stock = new StockController();
 	
 	public static void main(String[] args) {
 		System.out.println(Strings.WELCOME);
@@ -23,12 +25,15 @@ public class Main {
 			switch (option) {
 			case "1": // listar produtos disponíveis
 				System.out.println(Strings.SHOW_PRODUCS);
+				stock.listarTodos();
 				break;
 			case "2": // listar categorias
 				System.out.println(Strings.SHOW_CATEGORIES);
+				System.out.println("AINDA NÃO IMPLEMENTADO");
 				break;
 			case "3": // buscar por nome
 				System.out.println(Strings.SEARCH_BY_NAME);
+				stock.procurarPorNome(input.nextLine());
 				break;
 			case "4": // alterar esquema de cores
 				System.out.println("AINDA NÃO IMPLEMENTADO");
@@ -63,12 +68,15 @@ public class Main {
 			switch (option) {
 			case "1": // listar todos os produtos
 				System.out.println(Strings.SHOW_PRODUCS);
+				stock.listarTodos();
 				break;
 			case "2": // procurar produto
 				System.out.println(Strings.SEARCH_BY_NAME);
+				stock.procurarPorNome(input.nextLine());
 				break;
 			case "3": // cadastrar novo produto
-				System.out.println();
+				
+				System.out.println(Strings.PRODUCT_NEW);
 				break;
 			case "4": // remover produto
 				System.out.println(Strings.PRODUCT_REMOVE);

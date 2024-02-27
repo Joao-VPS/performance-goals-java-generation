@@ -83,7 +83,8 @@ public class Strings {
 			+ "║0 - sair da conta administrativa                ║\n"
 			+ "╚════════════════════════════════════════════════╝";
 	
-	public static final String PRODUCT_NEW = "Registrando novo produto. Diite o nome, código, preço, categoria e descrição separados por vírgula.";
+	public static final String PRODUCT_NEW = "Registrando novo produto.";
+	public static final String PRODUCT_PARAMS = "Digite o nome, código, preço, categoria e descrição separados por vírgula.";
 	public static final String PRODUCT_REMOVE = "Remover produto. Digite o código: ";
 	public static final String STOCK_UPDATE = "Alterar quantidade do item no estoque. Digite o código do produto: ";
 	public static final String ADMIN_EXIT = "Saindo da conta administrativa";
@@ -105,6 +106,27 @@ public class Strings {
 	
 	public static final String USER_REGISTER_USERNAME = "Digite um nome para se registrar: ";
 	public static final String USER_REGISTER_PASSWORD = "Registre uma nova senha: ";
+	public static final String USER_ALREADY_CREATED = "Este usuário já existe!";
+	public static final String USER_CREATED = "Usuário %s criado com sucesso!\n";
+	
+	// Classe User
+	public static final String USER_UPDATED_NAME = "Nome de usuário atualizado para %s\n";
+	public static final String USER_UPDATED_PASSWORD = "Sua senha foi alterada com sucesso!";
+	
+	// Class Stock
+	public static final String PRODUCT_DETAILS = "Exibindo detalhes do produto\n"
+			+ "--------------------\n"
+			+ "Nome: %s\n"
+			+ "Código: %d\n"
+			+ "Valor R$%.2f\n"
+			+ "Categoria: %s\n"
+			+ "Descrição: %s\n";
+	public static final String PRODUCT_NOT_FOUND = "O produto %s não foi encontrado!\n";
+	public static final String STOCK_NO_PRODUCTS = "Nenhum produto foi registrado ainda. Registre um novo!";
+	public static final String STOCK_NEW_PRODUCT = "O produto %s foi registrado com o código %d\n";
+	public static final String PRODUCT_UPDATED = "O produto de código %d foi atualizado com sucesso!\n";
+	public static final String PRODUCT_REMOVED = "O produto %s foi removido com sucesso!\n";
+	public static final String EMPTY_CART = "Seu carrinho já está vazio!";
 	
 	public static final String USER_PASSWORD_ERROR = "Senha incorreta. Você tem mais %d tentativas restantes...\n";
 }
