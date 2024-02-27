@@ -61,21 +61,25 @@ public class Strings {
 			+ "╔════════════════════════════════════════════════╗\n"
 			+ "║1 - Ver todos os produtos                       ║\n"
 			+ "║2 - Ver todas as categorias                     ║\n"
-			+ "║3 - Procurar produto por nome                   ║\n"
-			+ "║4 - alterar esquema de cores                    ║\n"
-			+ "║5 - acessar conta administrativa                ║\n"
+			+ "║3 - Procurar produto por nome ou código         ║\n"
+			+ "║4 - Adicionar produto ao carrinho               ║\n"
+			+ "║5 - Ver carrinho                                ║\n"
+			+ "║6 - Remover produto do carrinho                 ║\n"
+			+ "║7 - Finalizar compra                            ║\n"
+			+ "║8 - alterar esquema de cores                    ║\n"
+			+ "║9 - acessar conta administrativa                ║\n"
 			+ "║0 - sair do aplicativo                          ║\n"
 			+ "╚════════════════════════════════════════════════╝";
 	
 	public static final String SHOW_PRODUCS = "Exibindo todos os produtos disponíveis";
 	public static final String SHOW_CATEGORIES = "Exibindo produtos por categorias";
-	public static final String SEARCH_BY_NAME = "Digite o nome do produto";
+	public static final String PRODUCT_SEARCH = "Digite o nome ou código do produto";
 	
 	public static final String ADMIN_OPTIONS = Colors.getColorTheme()
 			+ "MENU ADMINISTRATIVO. Escolha uma opção:\n"
 			+ "╔════════════════════════════════════════════════╗\n"
 			+ "║1 - ver todos os produtos                       ║\n"
-			+ "║2 - procurar produto por nome                   ║\n"
+			+ "║2 - procurar produto por nome ou código         ║\n"
 			+ "║3 - cadastrar novo produto                      ║\n"
 			+ "║4 - remover produto                             ║\n"
 			+ "║5 - atualizar dados do produto                  ║\n"
@@ -84,7 +88,7 @@ public class Strings {
 			+ "╚════════════════════════════════════════════════╝";
 	
 	public static final String PRODUCT_NEW = "Registrando novo produto.";
-	public static final String PRODUCT_PARAMS = "Digite o nome, código, preço, categoria e descrição separados por vírgula.";
+	public static final String PRODUCT_PARAMS = "Digite o <nome>, <quantidade em estoque>, <código>, <preço>, <categoria> e <descrição> separados por vírgula.";
 	public static final String PRODUCT_REMOVE = "Remover produto. Digite o código: ";
 	public static final String STOCK_UPDATE = "Alterar quantidade do item no estoque. Digite o código do produto: ";
 	public static final String ADMIN_EXIT = "Saindo da conta administrativa";
@@ -117,16 +121,21 @@ public class Strings {
 	public static final String PRODUCT_DETAILS = "Exibindo detalhes do produto\n"
 			+ "--------------------\n"
 			+ "Nome: %s\n"
+			+ "Quantidade: %d\n"
 			+ "Código: %d\n"
 			+ "Valor R$%.2f\n"
 			+ "Categoria: %s\n"
 			+ "Descrição: %s\n";
 	public static final String PRODUCT_NOT_FOUND = "O produto %s não foi encontrado!\n";
-	public static final String STOCK_NO_PRODUCTS = "Nenhum produto foi registrado ainda. Registre um novo!";
-	public static final String STOCK_NEW_PRODUCT = "O produto %s foi registrado com o código %d\n";
 	public static final String PRODUCT_UPDATED = "O produto de código %d foi atualizado com sucesso!\n";
 	public static final String PRODUCT_REMOVED = "O produto %s foi removido com sucesso!\n";
+	public static final String PRODUCT_SET_QUANTITY = "Digite a quantidade desejada: ";
+	public static final String STOCK_OUT = "Nosso estoque esgotou! Temos apenas %d produtos disponíveis.\n";
+	public static final String STOCK_NO_PRODUCTS = "Nenhum produto foi registrado ainda. Registre um novo!";
+	public static final String STOCK_NEW_PRODUCT = "O produto %s foi registrado com o código %d\n";
 	public static final String EMPTY_CART = "Seu carrinho já está vazio!";
+	public static final String CART_SELECT_INDEX = "Indique o número do ítem no carrinho!";
+	public static final String CART_ITEM_ADD = "Foram adicionados %s %s ao seu carrinho.";
 	
 	public static final String USER_PASSWORD_ERROR = "Senha incorreta. Você tem mais %d tentativas restantes...\n";
 }

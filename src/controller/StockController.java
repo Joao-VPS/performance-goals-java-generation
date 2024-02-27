@@ -10,20 +10,12 @@ public class StockController implements StockRepository {
 	
 	private ArrayList<Product> listaProdutos = new ArrayList<Product>();
 	private ArrayList<Product> carrinho = new ArrayList<Product>();
-	
+
 	@Override
-	public void procurarPorCodigo(int id) {
-		Product localizado = buscarNaCollection(id);
+	public void procurarProduto(String nomeOuId) {
+		Product localizado = buscarNaCollection(nomeOuId);
 		
-		if (localizado == null) System.out.printf(Strings.PRODUCT_NOT_FOUND, id);
-		else localizado.visualizar();
-	}
-	
-	@Override
-	public void procurarPorNome(String nome) {
-		Product localizado = buscarNaCollection(nome);
-		
-		if (localizado == null) System.out.printf(Strings.PRODUCT_NOT_FOUND, nome);
+		if (localizado == null) System.out.printf(Strings.PRODUCT_NOT_FOUND, nomeOuId);
 		else localizado.visualizar();
 	}
 
@@ -61,7 +53,7 @@ public class StockController implements StockRepository {
 	public void deletarProduto(int numero) {
 		var localizado = buscarNaCollection(numero);
 		
-		if (localizado == null) System.out.println(Strings.PRODUCT_NOT_FOUND);
+		if (localizado == null) System.out.printf(Strings.PRODUCT_NOT_FOUND, numero);
 		else {
 			listaProdutos.remove(listaProdutos.indexOf(localizado));
 			System.out.printf(Strings.PRODUCT_REMOVED, localizado.getName());
@@ -69,19 +61,30 @@ public class StockController implements StockRepository {
 	}
 
 	@Override
-	public void adicionarAoCarrinho(int numero) {
-		Product localizado = buscarNaCollection(numero);
+	public void adicionarAoCarrinho(String nomeOuId, int quantity) {
+		Product localizado = buscarNaCollection(nomeOuId);
 		
-		if (localizado == null) System.out.printf(Strings.PRODUCT_NOT_FOUND, numero);
-		else carrinho.add(localizado);
-	}
-	
-	@Override
-	public void adicionarAoCarrinho(String name) {
-		Product localizado = buscarNaCollection(name);
-		
-		if (localizado == null) System.out.printf(Strings.PRODUCT_NOT_FOUND, name);
-		else carrinho.add(localizado);
+		if (localizado == null) {
+			System.out.printf(Strings.PRODUCT_NOT_FOUND, nomeOuId);
+			return;
+		}
+		if (quantity <= localizado.getQuantity()) {
+			Product productUpdated = localizado;
+			
+			int index = listaProdutos.indexOf(localizado);
+			int newQuantity = productUpdated.getQuantity() - quantity;
+			
+			localizado.setQuantity(quantity);
+			productUpdated.setQuantity(newQuantity);
+			
+			listaProdutos.set(index, productUpdated);
+			carrinho.add(localizado);
+			System.out.printf(Strings.CART_ITEM_ADD, quantity, localizado.getName());
+			
+			return;
+		} else {
+			System.out.printf(Strings.STOCK_OUT, localizado.getQuantity());
+		}
 	}
 
 	@Override
@@ -91,10 +94,13 @@ public class StockController implements StockRepository {
 			return;
 		}
 		
+		int index = 0;
+		
 		System.out.println("Mostrando todos os itens do seu carrinho:");
-		for (int i = 1; i < carrinho.size(); i++) {
-			System.out.println(i + " - " + carrinho.get(i).getName());
-			System.out.println("R$" + carrinho.get(i).getValue());
+		for (Product produto : carrinho) {
+			index++;
+			System.out.println(index + " - " + produto.getName());
+			System.out.println("R$" + produto.getValue());
 		}
 		
 		System.out.println();
@@ -111,7 +117,7 @@ public class StockController implements StockRepository {
 	}
 
 	@Override
-	public void finalizarCompra(int numeroOrigem, int numeroDestino, float valor) {
+	public void finalizarCompra() {
 		int valorTotal = 0;
 		
 		verCarrinho();
@@ -133,8 +139,20 @@ public class StockController implements StockRepository {
 	}
 	
 	public Product buscarNaCollection(String name) {
+		
+		try {
+			var id = Integer.parseInt(name);
+			
+			for (var product : listaProdutos) {
+				if (product.getId() == id) {
+					return product;
+				}
+			}
+		}
+		catch (Exception e) {}
+		
 		for (var product : listaProdutos) {
-			if (product.getName() == name) {
+			if (product.getName().equalsIgnoreCase(name)) {
 				return product;
 			}
 		}

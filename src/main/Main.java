@@ -12,6 +12,7 @@ public class Main {
 	static StockController stock = new StockController();
 	
 	public static void main(String[] args) {
+		stock.cadastrarProduto(new Product("Teste", 10, 40028922, 5.5f, "desenvolvedor", "produto abstrato para testar a aplicação"));
 		System.out.println(Strings.WELCOME);
 		while (true) {
 			menuOption();
@@ -33,10 +34,40 @@ public class Main {
 				System.out.println("AINDA NÃO IMPLEMENTADO");
 				break;
 			case "3": // buscar por nome
-				System.out.println(Strings.SEARCH_BY_NAME);
-				stock.procurarPorNome(input.nextLine());
+				System.out.println(Strings.PRODUCT_SEARCH);
+				stock.procurarProduto(input.nextLine());
 				break;
-			case "4": // alterar esquema de cores
+			case "4": // adicionar produto no carrinho
+				try {
+					System.out.println(Strings.PRODUCT_SEARCH);
+					var product = input.nextLine();
+					
+					System.out.println(Strings.PRODUCT_SET_QUANTITY);
+					var quantity = input.nextInt();
+					input.nextLine();
+					
+					stock.adicionarAoCarrinho(product, quantity);
+				} catch (Exception e) {
+					System.out.println(Strings.INVALID_OPTION);
+				}
+				break;
+			case "5": // ver carrinho
+				stock.verCarrinho();
+				break;
+			case "6": // remover produto do carrinho
+				stock.verCarrinho();
+				
+				try {
+					System.out.println(Strings.PRODUCT_SEARCH);
+					stock.removerDoCarrinho(input.nextInt());
+				} catch (Exception e) {
+					System.out.println(Strings.INVALID_OPTION);
+				}
+				break;
+			case "7": // finalizar compra
+				stock.finalizarCompra();
+				break;
+			case "8": // alterar esquema de cores
 				System.out.println("AINDA NÃO IMPLEMENTADO");
 				break;
 				/*while (true) {
@@ -46,7 +77,7 @@ public class Main {
 					else System.out.println(Strings.INVALID_OPTION);
 				}
 				break;*/
-			case "5": // solicita entrada no sistema administrativo
+			case "9": // solicita entrada no sistema administrativo
 				adminOptions();
 				break;
 			case "0": // Finalizar aplicativo
@@ -72,14 +103,16 @@ public class Main {
 				stock.listarTodos();
 				break;
 			case "2": // procurar produto
-				System.out.println(Strings.SEARCH_BY_NAME);
-				stock.procurarPorNome(input.nextLine());
+				System.out.println(Strings.PRODUCT_SEARCH);
+				stock.procurarProduto(input.nextLine());
 				break;
 			case "3": // cadastrar novo produto
 				System.out.println(Strings.PRODUCT_NEW);
 				System.out.println(Strings.PRODUCT_PARAMS);
 				String[] newData = input.nextLine().split(", ");
+
 				String name;
+				int quantity;
 				int id;
 				float value;
 				String category;
@@ -87,12 +120,13 @@ public class Main {
 					
 				try {
 					name = newData[0];
-					id = Integer.parseInt(newData[1]);
-					value = Float.parseFloat(newData[2].replace(',', '.'));
-					category = newData[3];
-					description = newData[4];
+					quantity = Integer.parseInt(newData[1]);
+					id = Integer.parseInt(newData[2]);
+					value = Float.parseFloat(newData[3].replace(',', '.'));
+					category = newData[4];
+					description = newData[5];
 					
-					stock.cadastrarProduto(new Product(name, id, value, category, description));
+					stock.cadastrarProduto(new Product(name, quantity, id, value, category, description));
 				} catch (Exception e) {
 					System.out.println(Strings.INVALID_OPTION);
 					System.out.println(Strings.PRODUCT_PARAMS);
@@ -100,6 +134,10 @@ public class Main {
 				break;
 			case "4": // remover produto
 				System.out.println(Strings.PRODUCT_REMOVE);
+				try {
+					stock.deletarProduto(input.nextInt());
+					input.nextLine();
+				} catch (Exception e) {System.out.println(Strings.INVALID_OPTION);}
 				break;
 			case "5": // atualizar dados do produto
 				System.out.println(Strings.PRODUCT_UPDATE);

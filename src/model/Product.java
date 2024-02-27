@@ -5,13 +5,15 @@ import util.Strings;
 
 public class Product {
 	private String name;
+	private int quantity;
 	private int id;
 	private float value;
 	private String category;
 	private String description;
 	
-	public Product(String name, int id, float value, String category, String description) {
+	public Product(String name, int quantity, int id, float value, String category, String description) {
 		this.name = name;
+		this.quantity = quantity;
 		this.id = id;
 		this.value = value;
 		this.category = category;
@@ -24,6 +26,14 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public int getId() {
@@ -59,6 +69,6 @@ public class Product {
 	}
 	
 	public void visualizar() {
-		System.out.printf(Strings.PRODUCT_DETAILS, name, id, value, category, description);
+		System.out.printf(Strings.PRODUCT_DETAILS, name, quantity, id, value, category, description);
 	}
 }
