@@ -1,5 +1,151 @@
 package util;
 
-public class Colors {
+import util.Colors;
+import util.Strings;
 
+public class Colors {
+	// Reset color
+		public static final String TEXT_RESET = "\u001B[0m";
+
+		// Text color
+		public static final String TEXT_BLACK = "\u001B[30m";
+		public static final String TEXT_RED = "\u001B[31m";
+		public static final String TEXT_GREEN = "\u001B[32m";
+		public static final String TEXT_YELLOW = "\u001B[33m";
+		public static final String TEXT_BLUE = "\u001B[34m";
+		public static final String TEXT_PURPLE = "\u001B[35m";
+		public static final String TEXT_CYAN = "\u001B[36m";
+		public static final String TEXT_WHITE = "\u001B[37m";
+
+		// Text bold
+		public static final String TEXT_BOLD = "\u001B[1m";
+
+		// Text underlined
+		public static final String TEXT_UNDERLINED = "\u001B[4m";
+
+		// Text italic
+		public static final String TEXT_ITALIC = "\u001B[3m";
+
+		// Text color high intensity
+		public static final String TEXT_BLACK_BRIGHT = "\u001B[90m";
+		public static final String TEXT_RED_BRIGHT = "\u001B[91m";
+		public static final String TEXT_GREEN_BRIGHT = "\u001B[92m";
+		public static final String TEXT_YELLOW_BRIGHT = "\u001B[93m";
+		public static final String TEXT_BLUE_BRIGHT = "\u001B[94m";
+		public static final String TEXT_PURPLE_BRIGHT = "\u001B[95m";
+		public static final String TEXT_CYAN_BRIGHT = "\u001B[96m";
+		public static final String TEXT_WHITE_BRIGHT = "\u001B[97m";
+
+		// Background color
+		public static final String BACKGROUND_BLACK = "\u001B[40m";
+		public static final String BACKGROUND_RED = "\u001B[41m";
+		public static final String BACKGROUND_GREEN = "\u001B[42m";
+		public static final String BACKGROUND_YELLOW = "\u001B[43m";
+		public static final String BACKGROUND_BLUE = "\u001B[44m";
+		public static final String BACKGROUND_PURPLE = "\u001B[45m";
+		public static final String BACKGROUND_CYAN = "\u001B[46m";
+		public static final String BACKGROUND_WHITE = "\u001B[47m";
+
+		// Background color high intensity
+		public static final String BACKGROUND_BLACK_BRIGHT = "\u001B[0;100m";
+		public static final String BACKGROUND_RED_BRIGHT = "\u001B[0;101m";
+		public static final String BACKGROUND_GREEN_BRIGHT = "\u001B[0;102m";
+		public static final String BACKGROUND_YELLOW_BRIGHT = "\u001B[0;103m";
+		public static final String BACKGROUND_BLUE_BRIGHT = "\u001B[0;104m";
+		public static final String BACKGROUND_PURPLE_BRIGHT = "\u001B[0;105m";
+		public static final String BACKGROUND_CYAN_BRIGHT = "\u001B[0;106m";
+		public static final String BACKGROUND_WHITE_BRIGHT = "\u001B[0;107m";
+
+		// Altera o tema do aplicativo
+		private static String color = TEXT_RESET + TEXT_WHITE;
+
+		public static boolean setColorTheme(String value) {
+			switch (value) {
+			case "0":
+				color = Colors.TEXT_BLACK;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_BLACK);
+				return true;
+			case "1":
+				color = Colors.TEXT_BLUE;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_DARK_BLUE);
+				return true;
+			case "2":
+				color = Colors.TEXT_GREEN;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_DARK_GREEN);
+				return true;
+			case "3":
+				color = Colors.TEXT_CYAN;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_DARK_AQUA);
+				return true;
+			case "4":
+				color = Colors.TEXT_RED;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_DARK_RED);
+				return true;
+			case "5":
+				color = Colors.TEXT_PURPLE;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_DARK_PURPLE);
+				return true;
+			case "6":
+				color = Colors.TEXT_YELLOW;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_GOLD);
+				return true;
+			case "7":
+				color = Colors.TEXT_WHITE;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_GRAY);
+				return true;
+			case "8":
+				color = Colors.TEXT_BLACK_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_DARK_GRAY);
+				return true;
+			case "9":
+				color = Colors.TEXT_BLUE_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_BLUE);
+				return true;
+			case "a":
+				color = Colors.TEXT_GREEN_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_GREEN);
+				return true;
+			case "b":
+				color = Colors.TEXT_CYAN_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_AQUA);
+				return true;
+			case "c":
+				color = Colors.TEXT_RED_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_RED);
+				return true;
+			case "d":
+				color = Colors.TEXT_PURPLE_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_LIGHT_PURPLE);
+				return true;
+			case "e":
+				color = Colors.TEXT_YELLOW_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_YELLOW);
+				return true;
+			case "f":
+				color = Colors.TEXT_WHITE_BRIGHT;
+				System.out.println(color + Strings.COLOR_CHANGED + Strings.COLOR_WHITE);
+				return true;
+			case "l":
+				color = Colors.TEXT_BOLD;
+				System.out.println(color + Strings.EFFECT_CHANGED + Strings.COLOR_BOLD);
+				return true;
+			case "n":
+				color = Colors.TEXT_UNDERLINED;
+				System.out.println(color + Strings.EFFECT_CHANGED + Strings.COLOR_UNDERLINED);
+				return true;
+			case "o":
+				color = Colors.TEXT_ITALIC;
+				System.out.println(color + Strings.EFFECT_CHANGED + Strings.COLOR_ITALIC);
+			case "r":
+				color = Colors.TEXT_RESET;
+				System.out.println(color + Strings.COLOR_RESET);
+				return true;
+			default:
+				return false;
+			}
+		}
+
+		public static String getColorTheme() {
+			return color;
+		}
 }
